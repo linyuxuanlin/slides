@@ -158,14 +158,15 @@
 
           <section><h3>二、模型展示及参数讲解</h3></section>
           <section><h4>模型细节及爆炸安装</h4></section>
-          <section>
-            <iframe
-              data-src="src/drone-explosion.mp4"
-              allowfullscreen=""
-              frameborder="0"
-              height="480"
-              width="853"
-            ></iframe>
+
+          <section
+            data-transition="slide"
+            data-background="#EAB547"
+            data-background-transition="zoom"
+          >
+            <video
+              src="https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/doc/drone-explosion.mp4"
+            ></video>
           </section>
 
           <section><h4>整体参数</h4></section>
@@ -496,7 +497,7 @@
       // - https://revealjs.com/config/
       Reveal.initialize({
         hash: true,
-
+        autoPlayMedia: true,
         // Learn about plugins: https://revealjs.com/plugins/
         plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
       });
