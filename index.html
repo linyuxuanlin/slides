@@ -1287,6 +1287,19 @@
         autoPlayMedia: true,
         // Learn about plugins: https://revealjs.com/plugins/
 
+        // 切换过渡效果
+        // none-无/fade-渐变/slide-飞入/convex-凸面/concave-凹面/zoom-缩放
+        transition: "convex",
+
+        // 切换过渡速度
+        // default-中速/fast-快速/slow-慢速
+        transitionSpeed: "fast", // default/fast/slow
+
+        // 预加载幻灯片数
+        viewDistance: 3,
+
+        // 幻灯片切换时写入浏览器历史记录
+        history: true,
         plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
       });
     </script>
