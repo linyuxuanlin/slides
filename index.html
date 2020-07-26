@@ -125,9 +125,9 @@
           />
           <br>
           <p style="white-space: pre-line;"><small>
-              获取第二排中间的弹药箱时，机器人处于极限高度 1050mm，&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              取弹装置处于机器人的中间位置，最上面一层的取弹夹通过气缸向前伸出，
-              此时机器人处于极限人度 920mm，距离资源岛中线 10mm.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</small>
+              获取第二排中间的弹药箱时，机器人处于极限高度 1050mm，&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+              取弹装置处于机器人的中间位置，最上面一层的取弹夹通过气缸向前伸出，&nbsp;
+              此时机器人处于极限人度 920mm，距离资源岛中线 10mm.&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</small>
           </p>
           </section>
 
@@ -435,9 +435,9 @@
             />
             <br><br>
             <p style="white-space: pre-line;"><small>
-              由⽆杆气缸与导轨滑块组成，在⻓板件的最前段固定场地交互卡，&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              随着⽆杆气缸的移动，⻓板件后端离开小胶轮，在重力的作⽤下下落，
-              至前端两个胶轮接触地⾯时，场地交互卡处于与场地表⾯平行的状态。</small></p>
+              由无杆气缸与导轨滑块组成，在长板件的最前段固定场地交互卡，&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              随着无杆气缸的移动，长板件后端离开小胶轮，在重力的作用下下落，
+              至前端两个胶轮接触地面时，场地交互卡处于与场地表面平行的状态。</small></p>
           </section>
 
           <section><h4>模型细节及爆炸安装</h4></section>
@@ -924,10 +924,74 @@
         <section>
           <section><h2>嵌入式 & 硬件部分</h2></section>
           <section><h3>一、软硬件资源分配</h3></section>
+
+          <section><img
+            data-src="https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200726191224.png"
+            style="
+              margin: 0 auto 1rem auto;
+              background: transparent;
+            "
+          /></section>
+
           <section><h3>二、硬件框图</h3></section>
+
+          <section><img
+            data-src="https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200726191243.png"
+            style="
+              margin: 0 auto 1rem auto;
+              background: transparent;
+            "
+          /></section>
+
+
           <section><h3>三、软件框架/流程图</h3></section>
           <section><h3>四、解决问题的经历</h3></section>
-          <section><h3>五、嵌入式特色功能加分</h3></section>
+
+          <section>
+          <p><small>
+            在调试步兵的拨盘拨弹的过程中，为了保证在火力全开的情况下，能够以最大的火力进行输出，需要拨盘在拨弹的过程中，能稳定快速的将弹丸准确流畅的向枪管传送。
+            </small></p>
+
+            <span class="fragment fade-up" style="display: inline-block;">
+          <p><small>
+            在实际测试中，我们发现，当拨弹速度达到一定程度后，由于拨弹结构的精度不高，转动的过程中会出现卡弹的情况，导致无法继续输送弹丸，进而不能保证在短时间有效杀伤地方目标机器人严重影响机器人的稳定性。
+          </small></p>
+        </span>
+        <span class="fragment fade-up" style="display: inline-block;">
+          <p><small>
+          在初期，从拨盘的机械结构入手，我们和机械组进行了多次设计，经历了多次测试，发现无论如何设计，都不能在结构上保证不会出现卡弹的情况，于是，我们决定从电控逻辑入手。我们对拨弹装置进行了观察和分析，发现卡弹的原因主要是因为，当拨弹速度过快时，密集的弹丸会从各个缝隙进入弹位孔，而而由于转速过快，导致弹丸还没有完全进入弹位，最终导致拨弹装置停滞。
+        </small></p>
+      </span>
+      <span class="fragment fade-up" style="display: inline-block;">
+        <p><small>
+          由于机械结构不可能有效地防止卡弹情况的出现，从机械结构入手在输送弹丸途中也难以有效解决，所以我们考虑从拨盘的动力源来优化，于是另辟蹊径，我们从解决电机转动问题入手，如果发生了卡弹后，如何让拨弹装置迅速恢复正常供弹。
+          </small></p>
+        </span>
+        </section>
+
+          <section><p ><small>
+          于是，我们第一时间想到就是在逻辑上反转，让电机将拨弹装置反转，从而将弹丸回滚。然而在经过实际测试后发现，卡弹的问题不仅会让电机无法向送弹的方向转动，还可能会让电机无法反转，从而物理上损坏电机。由于卡弹情况的概率性不可计算，所以我们则需要知道在何时卡弹，以便快速进行调整。
+          </small></p>
+          <span class="fragment fade-up" style="display: inline-block;">
+          <p><small>
+          我们多次尝试过后，决定采用 M2006 的真实速度作为参考，当转动过程中出现低于设定值后，则被大致认为出现卡弹，并利用真实速度小于设定速度值的时间累计值作为判断标准，当时间大于所设定的一个值，则被确定为真正的卡弹，反之，若时间累计值不足以达到设定值则仅为电机掉速情况。判断为出现卡弹过后则进而执行电机来回转动，直到 M2006 电机真实速度回升到正常水平则取消卡弹任务一定。目前阶段测试而言只有不断的向运动的反方向以一定频率进行来回转动，才能保证电机在各个方向上，不会因为卡弹而导致拨弹装置的停滞，此方案极为有效，在随后的调试中都未发现在弹量充足的情况下出现断供的现象。
+          </small></p></span></section>
+
+          <section><h3>五、特色功能</h3></section>
+
+          <section>
+            <p><small>由于机器人出现问题的时候并不能马上确定问题所在，于是编写了一个报警系统来更快速的查看问题根源。&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            </small></p>
+            <span class="fragment fade-up" style="display: inline-block;">
+              <p><small>思路如下：初始化一个定时器，每 20ms 执行一次中断。中断里加入我们自行编写的检测函数 DevicesMonitor_update()，相当于每 20ms 执行一次这个函数。进入检测函数后便开始检测各种设备是否在线，每一个外设成功接收到一次数据就会有一个标志位 +1，检测函数就是检测标志位数据是否大于 1，若大于 1 可以认为该设备在线，就清零标志位；
+              若小于 1 就可以认为该设备离线，并设定每种外设优先级，输入到 Device_setAlertType() 函数里进行优先级处理，优先级高的可以把优先级低的先暂时覆盖。 检测到设备离线后蜂鸣器和 LED 灯会一起报警，比如优先级设定为 4，蜂鸣器就每隔 100ms 连续响 4 下，LED 灯亮 4 盏；若有多个设备一起离线，优先显示优先级高的。&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            </small></p></span>
+            <span class="fragment fade-up" style="display: inline-block;"><p><small>
+              提升：方便在赛场和平时调试中直接找到问题所在，不用一步步排除，极大提高了效率。
+            </small></p>
+          </span>
+          </section>
+
           <section><h3>六、自研硬件模块介绍</h3></section>
         </section>
         <!-- 嵌入式/硬件结束 -->
