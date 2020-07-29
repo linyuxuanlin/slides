@@ -806,7 +806,7 @@
                 取弹机构的移动关联到三个框架，由上到下依次为：<br />
                 取弹夹及伸出框架<br />中间连接传动的框架（<font color="orange"
                   >橙色</font
-                >）<br />上层的主体框架（<font color="019A98">蓝绿⾊</font>）
+                >）<br />上层的主体框架（<font color="019A98">蓝绿色</font>）
               </small>
             </p>
           </section>
@@ -2137,6 +2137,112 @@
 
           <section>
             <h3>二、算法功能介绍</h3>
+          </section>
+
+          <section>
+            <h4>装甲识别</h4>
+          </section>
+
+          <section>
+            <p>
+              1. 预处理
+            </p>
+            <br />
+
+            <img
+              data-src="https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200729153736.png"
+              style="width: 400px; background: transparent;"
+            />
+
+            <p style="white-space: pre-line;">
+              <small>
+                利用膨胀、腐蚀处理图像后，<br />根据装甲板的颜色对图像选择红蓝通道
+                进行分合处理筛选出需要的颜色后再进行一次中值处理</small
+              >
+            </p>
+          </section>
+
+          <section>
+            <p>
+              2. 寻找灯条轮廓
+            </p>
+            <br />
+
+            <p style="white-space: pre-line;">
+              <small>
+                利用在灰度图和 HSV 图像找到的轮廓，
+                根据逻辑判断是否为正确的灯条，<br>将正确的灯条轮廓储存到矩形里面
+              </small>
+            </p>
+          </section>
+
+          <section>
+            <p>
+              3. 逻辑筛选灯条
+            </p>
+            <br />
+
+            <img
+              data-src="https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200729155600.png"
+              style="width: 300px; background: transparent;"
+            />
+
+            <p style="white-space: pre-line;">
+              <ul>
+                <small>
+                  <li>先区分出左右灯条</li>
+                  <li>求出左右灯条的面积比例、灯条高度差、灯条间的距离差</li>
+                  <li>利用这三者的数据，在其他地方进行逻辑回归，<br>&emsp;&nbsp;&nbsp;求出合适的权重，再放回这里筛选出进一步两个合适的灯条</li>
+                  <li>根据灯条之间的角度的逻辑关系，确定出同一装甲板上的两个灯条</li>
+                </small>
+              </ul>
+            </p>
+          </section>
+
+          <section>
+            <p>
+              4. 确定装甲板
+            </p>
+            <br />
+
+            <img
+              data-src="https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200729162846.png"
+              style="width: 300px; background: transparent;"
+            />
+
+            <p style="white-space: pre-line;">
+              <ul>
+                <small>
+                  <li>将前面确定出的两个灯条储存到一个矩形里面</li>
+                  <li>再把中心坐标等数据传给下位机进行射击操作</li>
+                </small>
+              </ul>
+            </p>
+          </section>
+
+          <section>
+            <h4>能量机关识别</h4>
+          </section>
+
+          <section>
+            <p>
+              1. 预处理
+            </p>
+            <br />
+
+            <img
+              data-src="https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200729163332.jpg"
+              style="width: 400px; background: transparent;"
+            />
+
+            <p style="white-space: pre-line;">
+              <ul>
+                <small>
+                  <li>先利用高斯滤波后，对图像根据装甲板颜色进行选择，<br>&emsp;&nbsp;&nbsp;将红蓝通道重新进行分合处理、筛选</li>
+                  <li>出所需颜色后再进行一次膨胀处理。</li>
+                </small>
+              </ul>
+            </p>
           </section>
 
           <section>
