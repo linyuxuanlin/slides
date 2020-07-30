@@ -2171,7 +2171,7 @@
             <p style="white-space: pre-line;">
               <small>
                 利用在灰度图和 HSV 图像找到的轮廓，
-                根据逻辑判断是否为正确的灯条，<br>将正确的灯条轮廓储存到矩形里面
+                根据逻辑判断是否为正确的灯条，<br />将正确的灯条轮廓储存到矩形里面
               </small>
             </p>
           </section>
@@ -2186,17 +2186,18 @@
               data-src="https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200729155600.png"
               style="width: 300px; background: transparent;"
             />
-
-            <p style="white-space: pre-line;">
-              <ul>
-                <small>
-                  <li>先区分出左右灯条</li>
-                  <li>求出左右灯条的面积比例、灯条高度差、灯条间的距离差</li>
-                  <li>利用这三者的数据，在其他地方进行逻辑回归，<br>&emsp;&nbsp;&nbsp;求出合适的权重，再放回这里筛选出进一步两个合适的灯条</li>
-                  <li>根据灯条之间的角度的逻辑关系，确定出同一装甲板上的两个灯条</li>
-                </small>
-              </ul>
-            </p>
+            <ul>
+              <small>
+                <li>先区分出左右灯条</li>
+                <li>求出左右灯条的面积比例、灯条高度差、灯条间的距离差</li>
+                <li>
+                  利用这三者的数据，在其他地方进行逻辑回归，<br />&emsp;&nbsp;&nbsp;求出合适的权重，再放回这里筛选出进一步两个合适的灯条
+                </li>
+                <li>
+                  根据灯条之间的角度的逻辑关系，确定出同一装甲板上的两个灯条
+                </li>
+              </small>
+            </ul>
           </section>
 
           <section>
@@ -2207,17 +2208,15 @@
 
             <img
               data-src="https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200729162846.png"
-              style="width: 300px; background: transparent;"
+              style="width: 400px; background: transparent;"
             />
 
-            <p style="white-space: pre-line;">
-              <ul>
-                <small>
-                  <li>将前面确定出的两个灯条储存到一个矩形里面</li>
-                  <li>再把中心坐标等数据传给下位机进行射击操作</li>
-                </small>
-              </ul>
-            </p>
+            <ul>
+              <small>
+                <li>将前面确定出的两个灯条储存到一个矩形里面</li>
+                <li>再把中心坐标等数据传给下位机进行射击操作</li>
+              </small>
+            </ul>
           </section>
 
           <section>
@@ -2235,14 +2234,14 @@
               style="width: 400px; background: transparent;"
             />
 
-            <p style="white-space: pre-line;">
-              <ul>
-                <small>
-                  <li>先利用高斯滤波后，对图像根据装甲板颜色进行选择，<br>&emsp;&nbsp;&nbsp;将红蓝通道重新进行分合处理、筛选</li>
-                  <li>出所需颜色后再进行一次膨胀处理</li>
-                </small>
-              </ul>
-            </p>
+            <ul>
+              <small>
+                <li>
+                  先利用高斯滤波后，对图像根据装甲板颜色进行选择，<br />&emsp;&nbsp;&nbsp;将红蓝通道重新进行分合处理、筛选
+                </li>
+                <li>出所需颜色后再进行一次膨胀处理</li>
+              </small>
+            </ul>
           </section>
 
           <section>
@@ -2256,15 +2255,15 @@
               style="width: 400px; background: transparent;"
             />
 
-            <p style="white-space: pre-line;">
-              <ul>
-                <small>
-                  <li>根据轮廓的父子关系，筛选出有父轮廓且满足 6 点拟合椭圆的小轮廓</li>
-                  <li>对大、小轮廓进行筛选后组合出符合条件的装甲板和叶片</li>
-                  <li>对扇叶进行排除法，判断是否为未激活装甲板</li>
-                </small>
-              </ul>
-            </p>
+            <ul>
+              <small>
+                <li>
+                  根据轮廓的父子关系，筛选出有父轮廓且满足 6 点拟合椭圆的小轮廓
+                </li>
+                <li>对大、小轮廓进行筛选后组合出符合条件的装甲板和叶片</li>
+                <li>对扇叶进行排除法，判断是否为未激活装甲板</li>
+              </small>
+            </ul>
           </section>
 
           <section>
@@ -2278,20 +2277,20 @@
               style="width: 200px; background: transparent;"
             />
 
-            <p style="white-space: pre-line;">
-              <ul>
-                <small>
-                  <li>利用已知装甲板的位置对圆心 R 的范围进行 ROI 处理，并通过 ROI 的图像找到圆心 R
-                  </li>
-                  <li>利用圆心 R 的位置画出圆形运动轨迹，并根据一定的预测提前量来决定预测点的位置
-                  </li>
-                  <li>隔帧计算运动差值，从而判断运动方向运动
-                  </li>
-                </small>
-              </ul>
-            </p>
+            <ul>
+              <small>
+                <li>
+                  利用已知装甲板的位置对圆心 R 的范围进行 ROI 处理，并通过 ROI
+                  的图像找到圆心 R
+                </li>
+                <li>
+                  利用圆心 R
+                  的位置画出圆形运动轨迹，并根据一定的预测提前量来决定预测点的位置
+                </li>
+                <li>隔帧计算运动差值，从而判断运动方向运动</li>
+              </small>
+            </ul>
           </section>
-
 
           <section>
             <p>
@@ -2300,20 +2299,25 @@
             <br />
             <small>
               <ul>
-                
-                  <li>小能量机关根据平均弹速、机关运行的方位（向上或向下），以给予相应的预测提前量
-                  </li>
-                  <br>
-                  <li>&emsp;&nbsp;大能量机关有两种方案（未实测）
-                    <ul><br>
-                      <li>
+                <li>
+                  小能量机关根据平均弹速、机关运行的方位（向上或向下），以给予相应的预测提前量
+                </li>
+                <br />
+                <li>
+                  &emsp;&nbsp;大能量机关有两种方案（未实测）
+                  <ul>
+                    <br />
+                    <li>
                       利用微积分的思想，对大能量机关先进行测速处理，找到对应的周期后利用函数和每帧的运动变化量来得到下一帧的速度，并根据其加速度来计算相应的预测提前量
-                      </li><br>
-                      <li>利用卡尔曼来进行预测，结合官方速度函数，给予当前和预测计算的数据，通过卡尔曼来得到预测提前量的真值
-                      </li>
+                    </li>
+                    <br />
+                    <li>
+                      利用卡尔曼来进行预测，结合官方速度函数，给予当前和预测计算的数据，通过卡尔曼来得到预测提前量的真值
+                    </li>
                   </ul>
-                  </li><br>
-                  <li>将相应的提前量添加到运动轨迹上，即可得到预测点</li>
+                </li>
+                <br />
+                <li>将相应的提前量添加到运动轨迹上，即可得到预测点</li>
               </ul>
             </small>
           </section>
@@ -2331,8 +2335,11 @@
               6. 得出结果
             </p>
             <br />
-            <p  style="white-space: pre-line;"><small>
-              根据机关的运行阶段、图像的状况、射击时间等信息<br>判断是否进行射击，实现自动射击的效果</small></p>
+            <p style="white-space: pre-line;">
+              <small>
+                根据机关的运行阶段、图像的状况、射击时间等信息<br />判断是否进行射击，实现自动射击的效果</small
+              >
+            </p>
           </section>
 
           <section>
@@ -2344,9 +2351,10 @@
             data-background="black"
             data-background-transition="zoom"
           >
-            <video data-src="https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/%E7%BA%BF%E4%B8%8A%E8%AF%84%E5%AE%A1-RM2020/%E7%AE%97%E6%B3%95/2020-07-28%2015-14-49_2.mp4"></video>
+            <video
+              data-src="https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/%E7%BA%BF%E4%B8%8A%E8%AF%84%E5%AE%A1-RM2020/%E7%AE%97%E6%B3%95/2020-07-28%2015-14-49_2.mp4"
+            ></video>
           </section>
-
         </section>
         <!-- 算法结束 -->
 
@@ -2354,6 +2362,12 @@
         <section>
           <section>
             <h2>其他部分</h2>
+          </section>
+
+          <section>
+            <h3>
+              资源岛兼收纳架
+            </h3>
           </section>
         </section>
         <!-- 其他结束 -->
