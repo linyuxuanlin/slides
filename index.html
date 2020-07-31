@@ -1099,48 +1099,38 @@
             <img
               data-src="https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200726162641.png"
               style="
-                width: 800px;
+                width: 450px;
                 margin: 0 auto 1rem auto;
                 background: transparent;
               "
             />
-            <p>主视图 — 初始状态</p>
-          </section>
 
-          <section>
             <img
               data-src="https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200726162721.png"
               style="
-                width: 600px;
+                width: 320px;
                 margin: 0 auto 1rem auto;
                 background: transparent;
               "
             />
-            <p>俯视图 — 初始状态</p>
-          </section>
 
-          <section>
             <img
               data-src="https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200726162801.png"
               style="
-                width: 700px;
+                width: 430px;
                 margin: 0 auto 1rem auto;
                 background: transparent;
               "
             />
-            <p>左视图 — 初始状态</p>
-          </section>
 
-          <section>
             <img
               data-src="https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200726162845.png"
               style="
-                width: 580px;
+                width: 350px;
                 margin: 0 auto 1rem auto;
                 background: transparent;
               "
             />
-            <p>左视图 — 极限尺寸</p>
           </section>
 
           <section>
@@ -2017,13 +2007,13 @@
 
           <section>
             <img
-              data-src="https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200731113643.png"
+              data-src="https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200731114150.png"
               style="margin: 0 auto 1rem auto; background: transparent;"
             />
           </section>
 
           <section>
-            <h3>三、软件框架/流程图</h3>
+            <h3>三、软件框架 / 流程图</h3>
           </section>
           <section>
             <h3>四、解决问题的经历</h3>
@@ -2130,44 +2120,61 @@
             <h3>一、算法框图</h3>
           </section>
 
+          <section><p>主体框架</p></section>
+
           <section>
             <img
               data-src="https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200729001859.jpg"
-              style="
-                width: 550px;
-                margin: 0 auto 1rem auto;
-                background: transparent;
-              "
+              align="left"
+              style="width: 400px; background: transparent;"
             />
-
-            <p>主体框架</p>
+            <p style="width: 500px; float: right;">
+              <small>
+                &emsp;&emsp;主体框架如图所示，程序整体采用多线程进行运行，且多个机器人共用同一套代码，用开关加以选择，以一帧为单位来讲，程序会先从下位机读取设定数据，程序通过不同的标志数据来采用不同的参数。线程分为三个部分，获取图像、处理图像和串口传输，对于同一帧的图像来讲，获取图像之后，线程会等待该帧所有图像处理线程完成图像读取的信号，然后才进入下一个循环，而串口传输线程同理，对图像处理线程中的图像得出的数据进行发送后才进行下一次循环。三个线程在各司其职的情况下也在互相联系配合，以提高程序运行效率。最后在串口传输方面我们选择了
+                USB 转 TTL 的串口以此连接 STM32
+                的下位机进行信息发送，完成单一帧图片的循环。
+              </small>
+            </p>
           </section>
+
+          <section><p>装甲板识别</p></section>
 
           <section>
             <img
               data-src="https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200729002250.png"
               style="
-                width: 850px;
+                width: 900px;
                 margin: 0 auto 1rem auto;
                 background: transparent;
               "
             />
-            <br /><br />
-            <br />
-            <p>装甲板识别</p>
+            <p>
+              <small
+                >装甲板识别的逻辑如图所示，根据摄像头传图像，再根据下位机发送的标志信息选用相应的颜色阈值，通过预处理之后，
+                找出图像中的目标颜色轮廓，并根据所需目标进行一一筛选、匹配、组合，最终选出一个最优灯条组合作为目标装甲板，并将目标的坐标信息打包处理。
+              </small>
+            </p>
           </section>
+
+          <section><p>能量机关识别</p></section>
 
           <section>
             <img
               data-src="https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200729002410.jpg"
+              align="left"
               style="
-                width: 550px;
+                width: 500px;
                 margin: 0 auto 1rem auto;
                 background: transparent;
               "
             />
-
-            <p>能量机关识别</p>
+            <p style="width: 400px; float: right;">
+              <small>
+                能量机关识别的逻辑如图所示，由于程序默认处于自瞄模式，所以能量机关识别模式会等待标志信号的输入才会进行切换。进行预处理之后，根据颜色分割出风车的扇叶灯条以及装甲板灯条，并对筛选出的每个轮廓进行遍历匹配，确认出一整个扇叶后计算扇叶的旋转方向，然后针对大能量机关，加入计算与之匹配旋转周期、频率、速度的函数，最后通过能量机关上的
+                R 作为圆心绘制圆形轨迹，并根据轨迹、弹速、距离等条件通过pnp
+                解算得出云台的旋转角度。之后还会加入射击决策，通过计算误差值在一定范围之内，从而达到自动射击的效果。
+              </small>
+            </p>
           </section>
 
           <section>
