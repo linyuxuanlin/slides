@@ -61,7 +61,7 @@ section.has-dark-background h6 {
   font-size: 38px;
   font-weight: lighter;
   color: #000;
-  text-indent: 46px;
+  text-indent: 60px;
   text-align: left;
 }
 
@@ -284,8 +284,6 @@ section.has-dark-background h6 {
   vertical-align: top;
   text-align: left;
 }
-
-
 
 .reveal small * {
   vertical-align: top;
