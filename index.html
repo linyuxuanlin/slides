@@ -1418,7 +1418,7 @@
           </section>
           <section
             data-transition="slide"
-            data-background="#EAB547"
+            data-background="#4285F4"
             data-background-transition="zoom"
           >
             <img
@@ -2117,7 +2117,11 @@
             <h4>模型细节及爆炸安装</h4>
           </section>
 
-          <section>
+          <section
+            data-transition="slide"
+            data-background="#0F9D58"
+            data-background-transition="zoom"
+          >
             <img
               data-src="https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/%E7%BA%BF%E4%B8%8A%E8%AF%84%E5%AE%A1-RM2020/%E5%B7%A5%E7%A8%8B/%E7%88%86%E7%82%B8%E5%9B%BE.gif"
               style="margin: 0 auto 1rem auto; background: transparent;"
@@ -2743,7 +2747,7 @@
 
           <section
             data-transition="slide"
-            data-background="#EAB547"
+            data-background="#DB4437"
             data-background-transition="zoom"
           >
             <video
@@ -2926,7 +2930,9 @@
             <span class="fragment fade-up" style="display: inline-block;">
               <p>
                 <small>
-                  在实际测试中，我们发现，当拨弹速度达到一定程度后，由于拨弹结构的精度不高，转动的过程中会出现卡弹的情况，导致无法继续输送弹丸，进而不能保证在短时间有效杀伤地方目标机器人严重影响机器人的稳定性。
+                  在实际测试中，我们发现，<font color="red"
+                    >当拨弹速度达到一定程度后，由于拨弹结构的精度不高，转动的过程中会出现卡弹的情况，导致无法继续输送弹丸，进而不能保证在短时间有效杀伤地方目标机器人严重影响机器人的稳定性&nbsp;</font
+                  >。
                 </small>
               </p>
             </span>
@@ -2940,7 +2946,9 @@
             <span class="fragment fade-up" style="display: inline-block;">
               <p>
                 <small>
-                  由于机械结构不可能有效地防止卡弹情况的出现，从机械结构入手在输送弹丸途中也难以有效解决，所以我们考虑从拨盘的动力源来优化，于是另辟蹊径，我们从解决电机转动问题入手，如果发生了卡弹后，如何让拨弹装置迅速恢复正常供弹。
+                  由于机械结构不可能有效地防止卡弹情况的出现，<font color="red"
+                    >从机械结构入手在输送弹丸途中也难以有效解决，所以我们考虑从拨盘的动力源来优化</font
+                  >，于是另辟蹊径，我们从解决电机转动问题入手，如果发生了卡弹后，如何让拨弹装置迅速恢复正常供弹。
                 </small>
               </p>
             </span>
@@ -2955,10 +2963,14 @@
             <span class="fragment fade-up" style="display: inline-block;">
               <p>
                 <small>
-                  我们多次尝试过后，决定采用 M2006
-                  的真实速度作为参考，当转动过程中出现低于设定值后，则被大致认为出现卡弹，并利用真实速度小于设定速度值的时间累计值作为判断标准，当时间大于所设定的一个值，则被确定为真正的卡弹，反之，若时间累计值不足以达到设定值则仅为电机掉速情况。判断为出现卡弹过后则进而执行电机来回转动，直到
-                  M2006
-                  电机真实速度回升到正常水平则取消卡弹任务一定。目前阶段测试而言只有不断的向运动的反方向以一定频率进行来回转动，才能保证电机在各个方向上，不会因为卡弹而导致拨弹装置的停滞，此方案极为有效，在随后的调试中都未发现在弹量充足的情况下出现断供的现象。
+                  <font color="red"
+                    >经过多次尝试过后，我们决定采用 M2006
+                    的真实速度作为参考</font
+                  >，当转动过程中出现低于设定值后，则被大致认为出现卡弹，<font
+                    color="red"
+                    >并利用真实速度小于设定速度值的时间累计值作为判断标准，当时间大于所设定的一个值，则被确定为真正的卡弹，反之，若时间累计值不足以达到设定值则仅为电机掉速情况。判断为出现卡弹过后则进而执行电机来回转动，直到
+                    M2006 电机真实速度回升到正常水平则取消卡弹任务</font
+                  >。目前阶段测试而言只有不断的向运动的反方向以一定频率进行来回转动，才能保证电机在各个方向上，不会因为卡弹而导致拨弹装置的停滞，此方案极为有效，在随后的调试中都未发现在弹量充足的情况下出现断供的现象。
                 </small>
               </p>
             </span>
@@ -2971,24 +2983,27 @@
           <section>
             <p>
               <small
-                >由于机器人出现问题的时候并不能马上确定问题所在，于是编写了一个报警系统来更快速的查看问题根源。&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                >由于机器人出现问题的时候并不能马上确定问题所在，于是编写了一个报警系统来更快速的查看问题根源。
               </small>
             </p>
             <span class="fragment fade-up" style="display: inline-block;">
               <p>
                 <small
-                  >思路如下：初始化一个定时器，每 20ms
-                  执行一次中断。中断里加入我们自行编写的检测函数
-                  DevicesMonitor_update()，相当于每 20ms
-                  执行一次这个函数。进入检测函数后便开始检测各种设备是否在线，每一个外设成功接收到一次数据就会有一个标志位
-                  +1，检测函数就是检测标志位数据是否大于 1，若大于 1
-                  可以认为该设备在线，就清零标志位； 若小于 1
-                  就可以认为该设备离线，并设定每种外设优先级，输入到
-                  Device_setAlertType()
-                  函数里进行优先级处理，优先级高的可以把优先级低的先暂时覆盖。
-                  检测到设备离线后蜂鸣器和 LED 灯会一起报警，比如优先级设定为
-                  4，蜂鸣器就每隔 100ms 连续响 4 下，LED 灯亮 4
-                  盏；若有多个设备一起离线，优先显示优先级高的。
+                  >思路如下：初始化一个定时器，<font color="red"
+                    >每 20ms 执行一次中断</font
+                  >。中断里加入我们自行编写的检测函数
+                  DevicesMonitor_update()，相当于每 20ms 执行一次这个函数。<font
+                    color="red"
+                    >进入检测函数后便开始检测各种设备是否在线，每一个外设成功接收到一次数据就会有一个标志位
+                    +1，检测函数就是检测标志位数据是否大于 1，若大于 1
+                    可以认为该设备在线，就清零标志位； 若小于 1
+                    就可以认为该设备离线</font
+                  >，并设定每种外设优先级，输入到 Device_setAlertType()
+                  函数里进行优先级处理，<font color="red"
+                    >依据优先级高的可以把优先级低的先暂时覆盖。
+                    检测到设备离线后蜂鸣器和 LED 灯会一起报警</font
+                  >，比如优先级设定为 4，蜂鸣器就每隔 100ms 连续响 4 下，LED
+                  灯亮 4 盏；若有多个设备一起离线，优先显示优先级高的。
                 </small>
               </p>
             </span>
@@ -3383,6 +3398,3 @@
     </script>
   </body>
 </html>
-
-// TODO:英雄配gif、哨兵部分、步兵部分、硬件框图、视觉更新、工程英雄
-//视频背景改颜色、
