@@ -2822,32 +2822,20 @@
           <section>
             <img
               data-src="https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200801125610.png"
-              style="
-                
-                margin: 0 auto 1rem auto;
-                background: transparent;
-              "
+              style="margin: 0 auto 1rem auto; background: transparent;"
             />
           </section>
 
           <section>
             <img
               data-src="https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200801125656.png"
-              style="
-                
-                margin: 0 auto 1rem auto;
-                background: transparent;
-              "
+              style="margin: 0 auto 1rem auto; background: transparent;"
             />
           </section>
           <section>
             <img
               data-src="https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200801125717.png"
-              style="
-                
-                margin: 0 auto 1rem auto;
-                background: transparent;
-              "
+              style="margin: 0 auto 1rem auto; background: transparent;"
             />
           </section>
 
@@ -2953,6 +2941,52 @@
 
           <section>
             <h3>六、自研硬件模块介绍</h3>
+          </section>
+
+          <section>
+            <p style="width: 455px; float: right; white-space: pre-line;">
+              超级电容控制模块
+
+              <small>
+                <b>功能：</b
+                >对超级电容组的充放电控制、输入电流检测、超级电容电压检测、CAN&nbsp;通信<br />
+                超级电容组充电采用恒流充电的方式，最大可支持&nbsp;10A&nbsp;电流，最大可充至&nbsp;26V，充电最大功率&nbsp;120W<br />
+                超级电容最低输出电量为&nbsp;9V，低于&nbsp;9V&nbsp;则自动切换为电池供电。故超级电容电压从&nbsp;9V~21V&nbsp;均等划分为&nbsp;0~100%，因此会有可能会出现负电量和超过&nbsp;100%&nbsp;电量的情况</small
+              >
+            </p>
+            <br /><img
+              data-src="https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200802220414.png"
+              style="background: transparent; width: 400px; float: left;"
+            />
+          </section>
+          <section>
+            <p>
+              超级电容组
+              <br /><br /><br /><br /><br /><br />
+              &emsp;&emsp;&emsp;
+              <small>
+                按照规则的要求，对电容&nbsp;2.7V/25F&nbsp;的电容单体通过两并十串的方式组合成一组不大于&nbsp;2000J&nbsp;的电容组。同时有十组过压保护电路分别并联在每组电容上，若电容单体电压超过&nbsp;2.7V，则电路导通，释放能量从而保护超级电容单体不会因过压而损坏。</small
+              >
+            </p>
+          </section>
+          <section>
+            <p style="width: 455px; float: right;">
+              LM5176 电源模块
+              <br /><br /><br /><br />
+              <small>
+                采用LM5176电源芯片的同步开关稳压模块，给小电脑进行供电。该模块可承受
+                10~30V 的输入电压，而稳定输出 19.5V；最大输出电流可达
+                15A；同时最大效率可达 92%。输出部分采用 104 mlcc、4.7uF mlcc
+                以及 47uF
+                固态电容相结合的滤波电路，可以使波纹减少到最小。更该模块虽然比普通的
+                buck 模块增加了不少元器件，但解决了 buck 模块在电压不足 20V
+                时无法正常输出 19.5V 而导致小电脑自动断电关机的问题。</small
+              >
+            </p>
+            <br /><img
+              data-src="https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200802222116.png"
+              style="background: transparent; width: 450px; float: left;"
+            />
           </section>
         </section>
         <!-- 嵌入式/硬件结束 -->
